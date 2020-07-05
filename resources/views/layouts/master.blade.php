@@ -9,14 +9,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Blank</title>
+  <title>@yield('title')</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="{{asset('/sbadmin2/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+@yield('style')
+    
 
 </head>
 
@@ -332,7 +335,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          @yield('container')
 
         </div>
         <!-- /.container-fluid -->
@@ -393,7 +396,7 @@
   <!-- script tambahan sweet alert, bukan dari bawaan sb-admin-2 -->
   @stack('scripts')
 
-  <script src="js/swal.min.js"></script>
+  <script src="{{ asset('/sbadmin2/js/swal.min.js')}}"></script>
 
 </body>
 

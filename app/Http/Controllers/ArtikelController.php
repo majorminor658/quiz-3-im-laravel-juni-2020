@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Artikel;
+use App\User;
+use Illuminate\Http\Request;
+
+class ArtikelController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $artikel = Artikel::all();
+        $user = User::all();
+        return view('artikel',[
+            'data' => $artikel,
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        return view('addartikel');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $data = new Artikel;
+        $data->user_id = $request->user_id;
+        $data->judul = $request->judul;
+        $data->isi = $request->isi;
+        $data->tag = $request->tag;
+        $data->slug = $request->tag;
+        $data->save();
+
+        return view('artikel');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Artikel $artikel)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Artikel $artikel)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Artikel $artikel)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Artikel $artikel)
+    {
+        //
+    }
+}
